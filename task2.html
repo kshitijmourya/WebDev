@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"/>
+<title> Task 2 </title>
+</head>
+
+<body>
+
+<p id="number" > </p> <br>
+
+<form>	  
+   <input type="button" onclick="alertfunction()" value="Button: alert" /> <br><br>
+   <input type="button" onclick="incrementValue()" value="Button: increment" /> <br><br>
+   <input type="button" onclick="appendfunction()" value="Button: append" /> <br><br>
+</form>
+
+
+<script>
+var value=10;
+document.getElementById("number").innerHTML =value ;
+
+function alertfunction() {
+    alert(value);
+}
+
+function incrementValue()
+{
+    value++;
+        document.getElementById('number').value = value;
+}
+
+function appendfunction() {
+    var para = document.createElement("P");
+    var t = document.createTextNode(value);
+    para.appendChild(t);
+    document.body.appendChild(para);
+}
+
+
+
+</script>
+
+</body>
+</html>
