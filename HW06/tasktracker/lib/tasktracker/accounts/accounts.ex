@@ -101,4 +101,12 @@ defmodule Tasktracker.Accounts do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  # We want a non-bang variant
+  def get_user(id), do: Repo.get(User, id)
+
+  # And we want by-email lookup
+  def get_user_by_email(email) do
+    Repo.get_by(User, email: email)
+  end
 end

@@ -1,0 +1,33 @@
+<h2>Listing Tasks</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Task name</th>
+      <th>Task description</th>
+      <th>Iscomplete</th>
+      <th>Timespent</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for task <- @tasks do %>
+    <tr>
+      <td><%= task.task_name %></td>
+      <td><%= task.task_description %></td>
+      <td><%= task.iscomplete %></td>
+      <td><%= task.timespent %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: task_path(@conn, :show, task), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: task_path(@conn, :edit, task), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Task", to: task_path(@conn, :new) %></span>
+<span><%= link "BACK", to: "/usertasks" %></span>

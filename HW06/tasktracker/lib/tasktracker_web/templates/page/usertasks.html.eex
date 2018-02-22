@@ -1,0 +1,23 @@
+<h2> ALL TASKS </h2>
+<%= link "Create Task", to: "/tasks/new", class: "btn btn-default btn-xs"%>
+
+<%= Enum.map @tasks, fn task -> %>
+<%= if task.user == @current_user do %>
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Assigned to User:<%= task.user.name %></h2>
+	      <p>Task Name: <%= task.task_name %></p>
+       	 <p>Task Description: <%= task.task_description %></p>
+	       <p>Status of task (True if task is completed)  :  <%= task.iscomplete %></p>
+	      <p>Time spent on tasks: <%= task.timespent %></p>
+        <span><%= link "Edit task", to: task_path(@conn, :edit, task), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete task", to: task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
